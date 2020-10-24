@@ -30,6 +30,10 @@ migrations: ## Run Django manage.py makemigrations
 migrate: ## Run Django manage.py migrate
 	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py migrate
 
+.PHONY: createsuperuser
+createsuperuser: ## Create Django Admin Site Superuser
+	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py createsuperuser
+
 .PHONY: black
 black: ## enblackenate the world
 	$(POETRY) run black $(SWIFTROAD_DIR)/journal
