@@ -34,6 +34,10 @@ migrate: ## Run Django manage.py migrate
 createsuperuser: ## Create Django Admin Site Superuser
 	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py createsuperuser
 
+.PHONY: test
+test: ## Run tests
+	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py test journal swiftroad
+
 .PHONY: black
 black: ## enblackenate the world
 	$(POETRY) run black $(SWIFTROAD_DIR)/journal
