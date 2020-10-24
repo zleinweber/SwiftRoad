@@ -4,7 +4,7 @@ POETRY_ENV = $(shell basename $(POETRY_ENV_DIR))
 SWIFTROAD_DIR = swiftroad
 
 help: ## Show this help.
-	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 .PHONY: deps
 deps: ## Install project dependencies
@@ -21,6 +21,10 @@ repl: ## Launch the project repl
 .PHONY: runserver
 runserver: ## Run the django dev server
 	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py runserver
+
+.PHONY: migrations
+migrations: ## Run Django manage.py makemigrations
+	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py makemigrations
 
 .PHONY: migrate
 migrate: ## Run Django manage.py migrate
