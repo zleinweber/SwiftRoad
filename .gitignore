@@ -2,3 +2,4 @@
 *.swp
 .DS_Store
 swiftroad/db.sqlite3
+.vscode
