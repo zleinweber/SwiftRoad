@@ -16,7 +16,7 @@ nuke-deps: ## Nuke the deps from orbit
 
 .PHONY: repl
 repl: ## Launch the project repl
-	$(POETRY) run python
+	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py shell
 
 .PHONY: runserver
 runserver: ## Run the django dev server
