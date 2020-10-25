@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 def index(request):
     """Super Basic Index brah."""
-    return HttpResponse("Hello, World. This is a django app mkay...")
+    return render(request, 'activities/index.html', context={"title": "SwiftRoad"})
