@@ -36,14 +36,14 @@ createsuperuser: ## Create Django Admin Site Superuser
 
 .PHONY: test
 test: ## Run tests
-	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py test journal swiftroad
+	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py test activities swiftroad
 
 .PHONY: black
 black: ## enblackenate the world
-	$(POETRY) run black $(SWIFTROAD_DIR)/journal
+	$(POETRY) run black $(SWIFTROAD_DIR)/activities
 	$(POETRY) run black $(SWIFTROAD_DIR)/swiftroad
 
 .PHONY: pylint
 pylint: ## Run pylint
-	$(POETRY) run pylint $(SWIFTROAD_DIR)/journal
+	$(POETRY) run pylint $(SWIFTROAD_DIR)/activities
 	$(POETRY) run pylint $(SWIFTROAD_DIR)/swiftroad
