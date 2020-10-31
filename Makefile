@@ -22,9 +22,13 @@ repl: ## Launch the project repl
 runserver: ## Run the django dev server
 	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py runserver
 
+.PHONY: check
+check: ## Run django checks
+	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py check
+
 .PHONY: migrations
 migrations: ## Run Django manage.py makemigrations
-	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py makemigrations activities
+	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py makemigrations
 
 .PHONY: migrate
 migrate: ## Run Django manage.py migrate
