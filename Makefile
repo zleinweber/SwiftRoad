@@ -24,7 +24,7 @@ runserver: ## Run the django dev server
 
 .PHONY: migrations
 migrations: ## Run Django manage.py makemigrations
-	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py makemigrations
+	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py makemigrations activities
 
 .PHONY: migrate
 migrate: ## Run Django manage.py migrate
