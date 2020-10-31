@@ -13,6 +13,24 @@ class ActivityType(models.Model):
     def __str__(self):
         return self.name
 
+    def add_activity(self, date_time=None, steps=0, duration=0, distance=0, user=None):
+        """
+        Add an activity for this type of activity.
+
+        Args:
+            date_time: A timezone aware python date time for the activity.
+            steps: The number of steps in the activity as an int.
+            duration: The duration in seconds of the activity.
+            distance: The distance traveled in miles as a float.
+            user: ForeignKey to the user who did this activity.
+
+        Returns:
+            An instance of Activity representing the newly created activity.
+        """
+        self.activity_set.create(
+            date=date_time, steps=steps, duration=duration, distance=distance, user=user
+        )
+
 
 class Activity(models.Model):
     """

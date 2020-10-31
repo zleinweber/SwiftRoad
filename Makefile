@@ -23,7 +23,7 @@ runserver: ## Run the django dev server
 	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py runserver
 
 .PHONY: check
-check: ## Run django checks
+check: ## Run Django manage.py check
 	$(POETRY) run python $(SWIFTROAD_DIR)/manage.py check
 
 .PHONY: migrations
