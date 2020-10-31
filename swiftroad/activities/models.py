@@ -3,7 +3,9 @@ from django.contrib.auth.models import User
 
 
 class ActivityType(models.Model):
-    """An activity type."""
+    """
+    An activity type (for instance 'Run').
+    """
 
     name = models.CharField(max_length=64)
     description = models.TextField()
@@ -13,7 +15,9 @@ class ActivityType(models.Model):
 
 
 class Activity(models.Model):
-    """An activity that a user does on a given day"""
+    """
+    Physical activity that a person logs at a specific time.
+    """
 
     date = models.DateTimeField("Activity Date and Time")
     steps = models.IntegerField(default=0)
