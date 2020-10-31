@@ -15,23 +15,51 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ActivityType',
+            name="ActivityType",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=64)),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=64)),
+                ("description", models.TextField()),
             ],
         ),
         migrations.CreateModel(
-            name='Activity',
+            name="Activity",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateTimeField(verbose_name='Activity Date and Time')),
-                ('steps', models.IntegerField()),
-                ('duration', models.IntegerField()),
-                ('distance', models.FloatField()),
-                ('activity_type', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='activities.activitytype')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date", models.DateTimeField(verbose_name="Activity Date and Time")),
+                ("steps", models.IntegerField()),
+                ("duration", models.IntegerField()),
+                ("distance", models.FloatField()),
+                (
+                    "activity_type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="activities.activitytype",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
