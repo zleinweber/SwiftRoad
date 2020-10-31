@@ -27,7 +27,7 @@ class ActivityType(models.Model):
         Returns:
             An instance of Activity representing the newly created activity.
         """
-        self.activity_set.create(
+        return self.activity_set.create(
             date=date_time, steps=steps, duration=duration, distance=distance, user=user
         )
 
@@ -49,3 +49,12 @@ class Activity(models.Model):
 
     def __str__(self):
         return f"{self.activity_type} on {self.date}"
+
+    def get_activity_type_name(self):
+        """
+        Get the name of the associated ActivityType for this activity.
+
+        Returns:
+            The string representation of the associated ActivityType.
+        """
+        return self.activity_type.__str__()

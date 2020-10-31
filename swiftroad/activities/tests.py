@@ -16,6 +16,24 @@ class ActivityModelTests(TestCase):
         new_activity = Activity(date=now)
         self.assertIs(new_activity.date, now)
 
+    def test_activity_get_activity_type_name(self):
+        """
+        Test Activities.models.Activity.get_activity_type_name()
+        """
+        activity_user = User.objects.create_user(username="testuser", password="12345")
+        activity_time = timezone.now()
+        activity_name = "Test"
+        test_activity = ActivityType(name=activity_name)
+        test_activity.save()
+        new_activity = test_activity.add_activity(
+            date_time=activity_time,
+            steps=5000,
+            duration=30,
+            distance=3.2,
+            user=activity_user,
+        )
+        self.assertEqual(new_activity.get_activity_type_name(), "Test")
+
 
 class ActivityTypeModelTests(TestCase):
     def test_activity_type_creation(self):
