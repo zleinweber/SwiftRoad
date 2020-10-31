@@ -16,9 +16,9 @@ class Activity(models.Model):
     """An activity that a user does on a given day"""
 
     date = models.DateTimeField("Activity Date and Time")
-    steps = models.IntegerField()
-    duration = models.IntegerField()
-    distance = models.FloatField()
+    steps = models.IntegerField(default=0)
+    duration = models.IntegerField(default=0)
+    distance = models.FloatField(default=0)
     activity_type = models.ForeignKey(ActivityType, on_delete=models.PROTECT)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
