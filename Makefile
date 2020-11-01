@@ -2,6 +2,7 @@ POETRY = $(shell which poetry)
 POETRY_ENV_DIR = $(shell $(POETRY) env info -p)
 POETRY_ENV = $(shell basename $(POETRY_ENV_DIR))
 SWIFTROAD_DIR = swiftroad
+DJANGO_SETTINGS = swiftroad.swiftroad.settings
 
 help: ## Show this help.
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
@@ -49,5 +50,4 @@ black: ## enblackenate the world
 
 .PHONY: pylint
 pylint: ## Run pylint
-	$(POETRY) run pylint $(SWIFTROAD_DIR)/activities
-	$(POETRY) run pylint $(SWIFTROAD_DIR)/swiftroad
+	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(POETRY) run pylint $(SWIFTROAD_DIR)/{activities,swiftroad}

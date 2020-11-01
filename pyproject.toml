@@ -16,8 +16,12 @@ pylint = "^2.6.0"
 djangorestframework = "^3.12.1"
 Markdown = "^3.3.3"
 django-filter = "^2.4.0"
+pylint-django = "2.2.0"
 
 [tool.poetry.dev-dependencies]
+
+[tool.pylint.master]
+load-plugins = ["pylint_django"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
