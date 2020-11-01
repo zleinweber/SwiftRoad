@@ -31,6 +31,22 @@ class ActivityType(models.Model):
             date=date_time, steps=steps, duration=duration, distance=distance, user=user
         )
 
+    def get_activities_by_month(self, month, user=None):
+        """
+        Get all activities for the specified month.
+
+        Args:
+            month: Int representing the month of year (E.G 11 = November).
+            user: Only return activites for the specified user.
+
+        Returns:
+            A Django query set matching all activities in the specified month.
+        """
+        if user is None:
+            return self.activity_set.filter(date__month=month)
+        else:
+            return self.activity_set.filter(date__month=month, user=user)
+
 
 class Activity(models.Model):
     """
